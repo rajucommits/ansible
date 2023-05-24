@@ -1,0 +1,11 @@
+---
+- name: working with ansible playbooks
+  hosts: all
+  tasks:
+    - name: working with debug module
+      script: ./mycode.sh
+      register: myoutput
+        
+        # - debug: msg="{{myoutput.stdout_lines[2]}}"
+  
+    - set_fact: value="{{myoutput.stdout_lines[2]}}"

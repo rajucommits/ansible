@@ -1,0 +1,15 @@
+---
+- name: difference between copy and template
+  hosts: server1
+  vars:
+    batch: "online"
+  tasks:
+    - name: working with copy module
+      copy:
+        src: /tmp/mydata.txt
+        dest: /tmp/copydata.txt
+    - name: working with template module
+      template:
+        src: /tmp/mydata.txt
+        dest: /tmp/templatedata.txt
+

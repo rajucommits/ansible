@@ -1,0 +1,6 @@
+---
+    - name: working with host_vars
+      hosts: all
+      tasks:
+      - name: working with host_vars
+        command: echo "my apache version is {{apache_version}}"

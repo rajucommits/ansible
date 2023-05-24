@@ -1,0 +1,5 @@
+---
+- name: Installing apache for ganesh environment
+  hosts: ganesh
+  roles:
+    - apache

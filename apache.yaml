@@ -1,0 +1,23 @@
+---
+- name: working with apache
+  hosts: server1
+  tasks:
+    - name: installingApache
+      yum:
+        name: httpd
+        state: latest
+    - name: Enable service httpd
+      systemd:
+        enabled: true
+        name: httpd
+    - name: sending index.html file
+      template:
+        src: index.html
+        dest: /var/www/html/index.html
+      notify: restart apache
+        
+  handlers:
+    - name: restart apache
+      systemd:
+        state: restarted
+        name: httpd

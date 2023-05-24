@@ -1,0 +1,14 @@
+---
+- name: working with special cases
+  hosts: all
+  serial: 1
+  tasks:
+    - name: executing script from bash file by working with ignore_cases
+      script: ./pgm.sh
+      ignore_errors: true
+    - name: printing data
+      command: echo "Hi all. Just printing the data"
+    - name: working with delegate_to
+      command: uname -a
+      delegate_to: server1
+      run_once: true

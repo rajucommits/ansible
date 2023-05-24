@@ -1,0 +1,19 @@
+---
+  - name: working with conditions
+    hosts: server1
+    vars:
+      val1: 10
+    tasks: 
+      - name: working with and operators
+        command: echo "This is and operator working"
+        when: ansible_os_family == "RedHat" and ansible_distribution == "Amazon"
+      - name: working with or operators
+        command: echo "This is or operator working"
+        when: ansible_os_family == "RedHat" or ansible_distribution == "amazon"
+      - name: working with relational operators
+        command: echo "my value is {{val1}}"
+        when: val1 > 9
+
+      - name: working with defined and undefined
+        command: echo "defined variable is {{devops}}"
+        when: devops is defined

@@ -1,0 +1,22 @@
+---
+  - name: working with loops
+    hosts: server1
+    tasks: 
+      - name: working wiht with_items
+        command: echo "This is with_items values. The value is {{item}}"
+        with_items: [10,20,30,40]
+        tags: "t1"
+      - name: working with with_dict
+        command: echo "This is with_dict values. The key is {{item.key}}, the value is {{item.value}}"
+        with_dict:
+          - "{{ansible_default_ipv4}}"
+        tags: "t2"
+      - name: Working with with_sequence
+        command: echo "This is with_sequence values. The value is {{item}}"
+        with_sequence: start=1 end=5
+        tags: "t3"
+      - name: Working with with_fileglob
+        command: echo "This is with_fileglob values. The file is {{item}}"
+        with_fileglob:
+          - "/tmp/mydata/*"
+        tags: "t4"

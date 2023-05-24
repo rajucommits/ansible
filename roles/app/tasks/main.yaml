@@ -1,0 +1,30 @@
+- name: executing pre-requisites
+  shell: amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+
+- name: installing httpd
+  yum:
+    name: httpd
+    state: latest
+
+- name: enable httpd
+  systemd:
+    name: httpd
+    enabled: true
+
+- name: Download and unarchive
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz 
+    dest: /var/www/html/
+    remote_src: yes
+    owner: apache
+    group: apache
+    extra_opts: [--strip-components=1]
+  notify: restart apache
+
+- name: configure wp-configure file
+  template:
+    src: wp-config.php
+    dest: /var/www/html/wp-config.php
+    owner: apache
+    group: apache
+  notify: restart apache

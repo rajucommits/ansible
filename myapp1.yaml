@@ -1,0 +1,13 @@
+- name: installing database
+  hosts: db
+  vars_files:
+    - myvars.yaml
+  roles:
+    - db
+
+- name: installing wordpress
+  hosts: app
+  vars_files:
+    - myvars.yaml
+  roles:
+    - app

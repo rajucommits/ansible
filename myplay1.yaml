@@ -1,0 +1,11 @@
+---
+- name: working with ansible playbooks
+  hosts: all
+  vars:
+    batch: "Feb"
+    topic: "ansible"
+  vars_files:
+    - myvalues.yaml
+  tasks:
+    - name: printing variables
+      command: echo "batch is {{batch}}, and the topic is {{topic}}, mode of training is {{mode_of_training}} and institue is {{institute}}}"

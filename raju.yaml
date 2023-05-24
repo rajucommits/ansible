@@ -1,0 +1,5 @@
+---
+- name: Installing apache for raju environment
+  hosts: raju
+  roles:
+    - apache
